@@ -1,0 +1,20 @@
+@charset "UTF-8";
+@import "main.css";
+
+div.main-controller td {
+    width: 800px;
+    text-align: left;
+}
+
+pre {
+    width: 750px;
+    height: 500px;
+    font-size: 1rem;
+}
+
+div.btnRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
