@@ -56,8 +56,26 @@ div.writer-container {
 
 nav.pagination {
     width: 500px;
-    margin: 10px auto;
-    text-align: center;
+    margin: 20px auto;
     display: flex;
-    justify-content :space-between
+    text-align: center;
+    justify-content :center;
+    font-size: 1.2rem;
+}
+
+.page-no {
+    display: inline-block;
+    width: 20px;
+    height: 30px;
+    padding: 0 1.5rem;
+    margin: 0 2px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.replyCount {
+    font-size: 0.8rem;
+    color: darkred;
 }

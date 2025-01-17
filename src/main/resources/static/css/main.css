@@ -56,9 +56,7 @@ a:hover {
     font-weight: bold;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"] {
+input[type="text"] {
     width: 250px;
     height: 35px;
     border-radius: 10px;
@@ -84,5 +82,22 @@ th {
 
 td {
     text-align: center;
+    padding: 10px;
+}
+
+/********************
+|    Fragment CSS   |
+********************/
+div#auth-check {
+    position: absolute;
+    width: 1000px;
+    left: 0;
+    right: 0;
+    top: 10px;
+    margin: 10px auto;
+    text-align: right;
+}
+
+div#auth-check ul, div#auth-check li {
     padding: 10px;
 }

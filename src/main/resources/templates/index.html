@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="https://thymeleaf.org">
+<html lang="ko" xmlns:th="https://thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,20 +23,18 @@
             </div>
         </div>
     </div>
-    <!-- Auth X -->
     <div class="gnb">
         <ul>
-            <li><a href="#">회원가입</a></li>
-            <li><a href="#">로그인</a></li>
-        </ul>
-        <!-- Auth O -->
-        <ul>
-            <li><a href="#">로그아웃</a></li>
-            <li><a href="#">개인정보 수정</a></li>
-        </ul>
-        <!--  -->
-        <ul>
-            <li><a th:href="@{/board/list}" href="./board/listView.html">게시판</a></li>
+            <th:block sec:authorize="isAnonymous()">
+                <li><a th:href="@{/user/regist}" href="./user/registView.html">회원가입</a></li>
+                <li><a th:href="@{/user/login}" href="./user/login.html">로그인</a></li>
+            </th:block>
+            <th:block sec:authorize="isAuthenticated()">
+                <li><a th:href="@{/user/logout}" href="#">로그아웃</a></li>
+                <li><a href="#">개인정보 수정</a></li>
+                <!-- <li><a th:href="@{/user/withdraw(userId=${#authentication.principal.userId})}">회원탈퇴</a></li> -->
+            </th:block>
+            <li><a th:href="@{/board/list?page=1&pageSize=15}" href="./board/listView.html">게시판</a></li>
         </ul>
     </div>
 </body>

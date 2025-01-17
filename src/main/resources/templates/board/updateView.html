@@ -13,19 +13,10 @@
     <link th:href="@{/css/board/write.css}" href="../../static/css/board/write.css" rel="stylesheet">
 </head>
 <body>
-    <div class="top-container">
-        <div class="logo">
-            <a th:href="@{/}" href="../index.html">
-                <img th:src="@{/images/homeLogo.png}" src="../../static/images/homeLogo.png" alt="홈로고" class="homeLogo">
-            </a>
-            <div class="topContent">
-                <h2>[ 글 수정 ]</h2>
-            </div>
-        </div>
-    </div>
+    <div class="top-container" th:replace="fragment/header(loginName=${loginName}, title='글 수정 하기')"></div>
 
     <div class="content">
-        <form th:action="@{/board/update/{seqNo}(seqNo=${board.seqNo}, searchTheme=${searchTheme}, searchWord=${searchWord})}" method="post">
+        <form th:action="@{/board/update/{seqNo}(seqNo=${board.seqNo}, searchTheme=${searchTheme}, searchWord=${searchWord})}" method="post" enctype="multipart/form-data">
             <input type="text" name="writer" th:value="${board.writer}" hidden>
             <table>
                 <tbody>
@@ -47,7 +38,19 @@
                     </tr>
                     <tr>
                         <th>첨부파일</th>
-                        <td><input type="file" name="" id=""></td>
+                        <th:block th:if="${board.savedFileName}">
+                            <td>
+                                <a th:href="@{/board/download(seqNo=${board.seqNo})}">
+                                    <span th:text="${board.originalFileName}" style="color: green;" id="originalFileName"></span>
+                                </a><br>
+                                <input type="file" name="uploadFile" id="uploadFile" style="margin-top: 5px;">
+                            </td>
+                        </th:block>
+                        <th:block th:unless="${board.savedFileName}">
+                            <td>
+                                <input type="file" name="uploadFile" id="uploadFile">
+                            </td>
+                        </th:block>
                     </tr>
                 </tbody>
             </table>

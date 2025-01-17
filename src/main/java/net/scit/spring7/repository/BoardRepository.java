@@ -1,8 +1,7 @@
 package net.scit.spring7.repository;
 
-import java.util.List;
-
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import net.scit.spring7.entity.BoardEntity;
@@ -10,10 +9,10 @@ import net.scit.spring7.entity.BoardEntity;
 
 public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
 
-	List<BoardEntity> findByTitleContains(String searchWord, Sort by);
+	Page<BoardEntity> findByTitleContains(String searchWord, PageRequest of);
 
-	List<BoardEntity> findByWriterContains(String searchWord, Sort by);
+	Page<BoardEntity> findByWriterContains(String searchWord, PageRequest of);
 
-	List<BoardEntity> findByContentContains(String searchWord, Sort by);
+	Page<BoardEntity> findByContentContains(String searchWord, PageRequest of);
 
 }

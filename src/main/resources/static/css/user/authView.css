@@ -1,0 +1,44 @@
+@charset "UTF-8";
+@import "../main.css";
+
+
+.id-check {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+td {
+    text-align: left;
+}
+
+input[type="password"],
+input[type="email"] {
+    width: 250px;
+    height: 35px;
+    border-radius: 10px;
+    border-color: dodgerblue;
+    padding-left: 10px;
+}
+
+.form-container {
+    width: 1000px;
+    margin: 0 auto;
+    background: linear-gradient(60deg, rgba(255, 50, 125, 0.8) 0%, rgba(75, 125, 255, 0.8) 100%);
+}
+
+.registTable {
+    width: 600px;
+}
+.registTable > th {
+    width: 70%;
+}
+
+.submitBun {
+    margin-right: 40px;
+}
+
+#dupCheckBtn {
+    margin-left: 10px;
+}

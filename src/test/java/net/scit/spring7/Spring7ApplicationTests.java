@@ -20,7 +20,7 @@ class Spring7ApplicationTests {
 
 	@Test
 	void testInsertBoard() {
-		String[] writers = {"김윤성", "박준범", "송지율", "오세준", "윤서준"};
+		String[] writers = {"qweqwe", "박준범", "송지율", "오세준", "윤서준"};
 		String[] contents = {
 				"二人の間 通り過ぎた風は",
 				"どこから寂しさを運んできたの",
@@ -68,7 +68,7 @@ class Spring7ApplicationTests {
 				"僕の心が 僕を追い越したんだよ"
 		};
 		
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 250; i++) {
 			int idxWriters = (int) (Math.random() * writers.length);
 			int idxContents = (int) (Math.random() * contents.length);
 			String writer = writers[idxWriters];

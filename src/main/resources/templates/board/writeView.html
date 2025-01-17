@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="https://thymeleaf.org">
+<html lang="ko" xmlns:th="https://thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,24 +13,16 @@
     <link th:href="@{/css/board/write.css}" href="../../static/css/board/write.css" rel="stylesheet">
 </head>
 <body>
-    <div class="top-container">
-        <div class="logo">
-            <a th:href="@{/}" href="../index.html">
-                <img th:src="@{/images/homeLogo.png}" src="../../static/images/homeLogo.png" alt="홈로고" class="homeLogo">
-            </a>
-            <div class="topContent">
-                <h2>[ 글 작성 ]</h2>
-            </div>
-        </div>
-    </div>
+    <div class="top-container" th:replace="fragment/header(loginName=${loginName}, title='글 작성 하기')"></div>
+
 
     <div class="content">
-        <form th:action="@{/board/write}" method="post">
+        <form th:action="@{/board/write}" method="post" enctype="multipart/form-data">
             <table>
                 <tbody>
                     <tr>
                         <th>작성자</th>
-                        <td><input type="text" name="writer" id="writer" value="이몽룡"></td>
+                        <td><input type="text" name="writer" id="writer" th:value="${#authentication.principal.userId}" readonly></td>
                     </tr>
                     <tr>
                         <th>글 제목</th>
@@ -42,12 +34,12 @@
                     </tr>
                     <tr>
                         <th>첨부파일</th>
-                        <td><input type="file" name="" id=""></td>
+                        <td><input type="file" name="uploadFile" id="uploadFile"></td>
                     </tr>
                 </tbody>
             </table>
             <div class="btn-container">
-                <input type="submit" value="작성하기" class="writeBtn btn btn-primary">
+                <input type="submit" value="작성하기" class="writeBtn btn btn-primary" id="submitBtn">
                 <input type="reset" value="초기화" class="btn btn-secondary">
             </div>
         </form>

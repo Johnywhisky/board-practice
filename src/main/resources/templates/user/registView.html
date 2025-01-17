@@ -1,11 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="https://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Css & Js -->
+    <script th:src="@{/js/jQuery.js}" src="../../static/js/jQuery.js"></script>
+    <script th:src="@{/js/user/regist.js}" src="../../static/js/user/regist.js"></script>
+    <link th:href="@{/css/user/authView.css}" href="../../static/css/user/authView.css" rel="stylesheet">
 </head>
 <body>
+    <div class="top-container">
+        <div class="logo">
+            <a th:href="@{/}" href="./index.html">
+                <img th:src="@{/images/homeLogo.png}" src="../../static/images/homeLogo.png" alt="홈로고" class="homeLogo">
+            </a>
+        </div>
+        <div>
+            <h2>[ 회원가입 ]</h2>
+        </div>
+    </div>
     
+    <div class="form-container pointColor">
+        <form th:action="@{/user/regist}" method="post">
+            <table class="registTable">
+                <tbody> 
+                    <tr>
+                        <th>아이디</th>
+                        <td>
+                                <input type="text" name="userId" id="userId" placeholder="ID 입력">
+                                <input type="button" value="중복 확인" id="dupCheckBtn" class="btn btn-secondary"><br>
+                                <span id="idDupCheckResult"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>비밀번호</th>
+                        <td><input type="password" name="userPwd" id="userPwd" placeholder="비밀번호 입력"></td>
+                    </tr>
+                    <tr>
+                        <th>비밀번호 확인</th>
+                        <td>
+                            <input type="password" name="userPwdCheck" id="userPwdCheck" placeholder="비밀번호 확인">
+                            <span id="pwdCheckResult" style="font-size: 0.8em;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>이름</th>
+                        <td><input type="text" name="name" id="userName" placeholder="이름 입력"></td>
+                    </tr>
+                    <tr>
+                        <th>이메일</th>
+                        <td><input type="text" name="email" id="email" placeholder="이메일 입력"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <input type="submit" value="회원가입" id="submitBun" class="btn btn-primary">
+                            <input type="reset" value="초기화" class="btn btn-danger">
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
 </body>
 </html>

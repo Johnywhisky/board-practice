@@ -3,12 +3,10 @@ package net.scit.spring7.entity;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.hibernate.annotations.Formula;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -38,6 +36,7 @@ public class BoardEntity {
 	@Column(name="seq_no")
 	private Long seqNo;
 
+	@Column(nullable=false)
 	private String writer;
 
 	@Column(nullable=false)
@@ -56,11 +55,18 @@ public class BoardEntity {
 	@Column(name="updated_at")
 	private LocalDateTime updatedAt;
 
+	@Column(name="original_file_name")
+	private String originalFileName;
+
+	@Column(name="saved_file_name")
+	private String savedFileName;
+
+	@Formula("(SELECT count(*) FROM replys r WHERE seq_no = r.board_seq_no)")
+	private Integer replyCount;
+
 	@PrePersist
-	protected void setRolesDefault() {
-		if (this.hitCount == null) {
-			this.hitCount = 0;
-		}
+	public void prePersist() {
+		this.hitCount = 0;
 	}
 
 	public static BoardEntity toEntity(BoardDto dto) {
@@ -70,6 +76,8 @@ public class BoardEntity {
 			.title(dto.getTitle())
 			.content(dto.getContent())
 			.hitCount(dto.getHitCount())
+			.originalFileName(dto.getOriginalFileName())
+			.savedFileName(dto.getSavedFileName())
 			.build();
 	}
 }

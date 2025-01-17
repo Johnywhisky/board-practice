@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import "main.css";
+@import "../main.css";
 
 div.main-controller td {
     width: 800px;
@@ -17,4 +17,52 @@ div.btnRow {
     justify-content: center;
     align-items: center;
     gap: 50px;
+}
+
+div.reply-input-container {
+    width: 1000px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input#replyContent {
+    width: 85%;
+    height: 50px;
+    font-size: large;
+}
+
+#replySubmitBtn {
+    width: 15%;
+    height: 50px;
+    font-size: large;
+}
+
+#deleteAttatchment {
+    cursor: pointer;
+}
+
+.reply-table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.reply-table > thead > tr{
+    padding: 10px;
+}
+table.reply-table > thead > tr, table.reply-table > tbody > tr {
+    height: 20px;
+}
+.reply-content {width: 550px;}
+.reply-writer { width: 150px;}
+.reply-createdAt { width: 200px;}
+.reply-btns {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.reply-btns > input {
+    margin: 5px;
 }
