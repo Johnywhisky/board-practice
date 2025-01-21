@@ -27,6 +27,8 @@ public class SecurityConfig {
 				"/js/**"
 			).permitAll()
 			.requestMatchers("/admin").hasRole("ADMIN")
+			.requestMatchers("/user/pwdcheck").hasRole("USER")
+			.requestMatchers("/user/mypage").hasRole("USER")
 			.anyRequest().authenticated()
 		);
 		http.formLogin((auth)-> auth
