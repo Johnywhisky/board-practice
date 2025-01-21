@@ -31,8 +31,7 @@
             </th:block>
             <th:block sec:authorize="isAuthenticated()">
                 <li><a th:href="@{/user/logout}" href="#">로그아웃</a></li>
-                <li><a href="#">개인정보 수정</a></li>
-                <!-- <li><a th:href="@{/user/withdraw(userId=${#authentication.principal.userId})}">회원탈퇴</a></li> -->
+                <li><a th:href="@{/user/pwdcheck}">개인정보 수정</a></li>
             </th:block>
             <li><a th:href="@{/board/list?page=1&pageSize=15}" href="./board/listView.html">게시판</a></li>
         </ul>

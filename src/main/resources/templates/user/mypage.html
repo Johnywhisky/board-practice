@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script th:src="@{/js/jQuery.js}" src="../../static/js/jQuery.js"></script>
+    <script th:src="@{/js/user/mypage.js}"></script>
+    <link th:href="@{/css/user/authView.css}" href="../../static/css/user/authView.css" rel="stylesheet">
+</head>
+<body>
+    <h2>[ 개인정보 수정 ]</h2>
+    <form th:action="@{/user/myinfo}" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <th>아이디</th>
+                    <td><input type="text" name="userId" id="userId" th:value="${user.userId}" class="non-border" readonly></td>
+                </tr>
+                <tr>
+                    <th>이름</th>
+                    <td><input type="text" name="userName", id="userName" th:value="${user.name}" class="non-border" readonly></td>
+                </tr>
+                <tr>
+                    <th>비밀번호</th>
+                    <td><input type="password" name="userPwd" id="userPwd" placeholder="비밀번호 입력"></td>
+                </tr>
+                <tr>
+                    <th>비밀번호 확인</th>
+                    <td>
+                        <input type="password" name="userPwdCheck" id="userPwdCheck" placeholder="비밀번호 확인">
+                        <span id="pwdCheckResult" style="font-size: 0.8em;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td><input type="text" name="email" id="email" th:value="${user.email}"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <input type="submit" value="정보 수정" id="submitBun" class="btn btn-primary">
+                        <input type="reset" value="초기화" class="btn btn-danger">
+                    </th>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>

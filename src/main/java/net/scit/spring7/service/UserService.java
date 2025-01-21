@@ -18,6 +18,11 @@ public class UserService {
 	private final UserRepository repo;
 	private final BCryptPasswordEncoder bcryptPwdEncoder;
 
+	public LoginUserDetailsDto findById(String userId) {
+
+		return repo.findById(userId).map(LoginUserDetailsDto::toDto).orElseThrow(RuntimeException::new);
+	}
+
 	@Transactional
 	public Boolean save(LoginUserDetailsDto userDto) {
 		UserEntity entity = UserEntity.toEntity(userDto);
@@ -36,6 +41,20 @@ public class UserService {
 
 	public void withdraw(String userId) {
 		repo.deleteById(userId);
+
+		return ;
+	}
+
+	public Boolean matchesPwd(String rawPwd, String userPwd) {
+
+		return bcryptPwdEncoder.matches(rawPwd, userPwd);
+	}
+
+	@Transactional
+	public void updateUserInfoById(LoginUserDetailsDto userDto) {
+		LoginUserDetailsDto entity = repo.findById(userDto.getUsername()).map(LoginUserDetailsDto::toDto).orElseThrow(RuntimeException::new);
+		entity.setEmail(userDto.getEmail());
+		entity.setUserPwd(bcryptPwdEncoder.encode(userDto.getUserPwd()));
 
 		return ;
 	}

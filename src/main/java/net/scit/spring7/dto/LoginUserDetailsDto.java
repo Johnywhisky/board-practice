@@ -48,6 +48,7 @@ public class LoginUserDetailsDto implements UserDetails {
 			.userId(entity.getUserId())
 			.userPwd(entity.getUserPwd())
 			.name(entity.getName())
+			.email(entity.getEmail())
 			.roles(entity.getRoles())
 			.build();
 	}
